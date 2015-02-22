@@ -10,7 +10,7 @@ class InteractiveInterpreter(cmd.Cmd):
       cmd.Cmd.__init__(self)
       self.prompt = Bcolours.OKBLUE + "lizard> " + Bcolours.ENDC
       self.intro = os.system("figlet lizard")
-      myDatabase = Database()
+      self.myDatabase = Database()
 
   def do_use(self,line):
     options = line.split(None, 1)
@@ -20,6 +20,7 @@ class InteractiveInterpreter(cmd.Cmd):
     pass
 
   def do_send(self,line):
+    print self.myDatabase.addresses()
     pass
 
   def complete_send(self,text,line,start_index,end_index):
