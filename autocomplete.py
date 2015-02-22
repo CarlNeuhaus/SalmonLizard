@@ -1,6 +1,7 @@
 import cmd
 import os
 import sys
+# user libraries
 import formatting
 
 file_names = open('names.db')
@@ -12,8 +13,8 @@ addresses = [line.rstrip('\n') for line in file_addresses]
 class Complete(cmd.Cmd):
   def __init__(self):
       cmd.Cmd.__init__(self)
-      self.prompt = formatting.Bcolours.OKBLUE + "bitos> " + formatting.Bcolours.ENDC
-      self.intro = os.system("figlet bitos")
+      self.prompt = formatting.Bcolours.OKBLUE + "lizard> " + formatting.Bcolours.ENDC
+      self.intro = os.system("figlet lizard")
 
   def do_use(self,line):
     options = line.split(None, 1)
