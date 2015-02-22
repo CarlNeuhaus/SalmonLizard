@@ -17,9 +17,16 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-from framework.interface import InteractiveInterpreter
+__author__ = "Carl A Neuhaus"
+__copyright__ = "Copyright 2015, Carl A Neuhaus"
+__credits__ = ["zeroSteiner"]
 
-__version__ = '0.1'
+__licence__ = "GNU Public Licence"
+__version__ = "0.1b"
+__maintainer__ = "Carl A Neuhaus"
+__status__ = "test"
+
+from framework.interface import InteractiveInterpreter
 
 def main():
   interpreter = InteractiveInterpreter()
