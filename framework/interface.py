@@ -2,50 +2,48 @@ import cmd
 import os
 import sys
 # user libraries
-import formatting
+from framework.formatting import Bcolours
+from databases.databaseSetup import Database
 
-file_names = open('names.db')
-names = [line.rstrip('\n') for line in file_names]
-
-file_addresses = open('addresses.db')
-addresses = [line.rstrip('\n') for line in file_addresses]
-
-class Complete(cmd.Cmd):
+class InteractiveInterpreter(cmd.Cmd):
   def __init__(self):
       cmd.Cmd.__init__(self)
-      self.prompt = formatting.Bcolours.OKBLUE + "lizard> " + formatting.Bcolours.ENDC
+      self.prompt = Bcolours.OKBLUE + "lizard> " + Bcolours.ENDC
       self.intro = os.system("figlet lizard")
+      myDatabase = Database()
 
   def do_use(self,line):
     options = line.split(None, 1)
     if options[0] == 'payload':
-      payload = options[1] 
+      payload = options[1]
     self.prompt = formatting.Bcolours.OKBLUE + options[0] + "-" + payload +  ">  " + formatting.Bcolours.ENDC
     pass
+
   def do_send(self,line):
     pass
 
   def complete_send(self,text,line,start_index,end_index):
     if text:
       return [
-        address for address in addresses
+        address for address in myDatabase.addresses
         if address.startswith(text)
       ]
     else:
-      return addresses
+      return myDatabase.addresses
 
   def do_name(self,line):
+     
     print "lists all names"
     pass
- 
+
   def complete_name(self,text,line,start_index,end_index):
     if text:
       return [
-        name for name in names
+        name for name in myDatabase.names
         if name.startswith(text)
       ]
     else:
-      return names
+      return myDatabase.names
 
   def do_clear(self,line):
     os.system('clear')
