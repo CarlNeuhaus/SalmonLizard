@@ -1,4 +1,4 @@
-#  salmon.py
+#  databases/databaseSetup.py
 #
 #  Copyright 2015 Carl A. Neuhaus
 #
@@ -17,13 +17,14 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-from framework.interface import InteractiveInterpreter
+class Database():
 
-__version__ = '0.1'
+  def names(self):
+    with open('databases/names.db') as names_database:
+      names = [line.rstrip('\n') for line in names_database]
+      return names
 
-def main():
-  interpreter = InteractiveInterpreter()
-  interpreter.cmdloop()
-
-if __name__ == '__main__':
-  main()
+  def addresses(self):
+    with open('databases/addresses.db') as addresses_database:
+      addresses = [line.rstrip('\n') for line in addresses_database]
+      return addresses
