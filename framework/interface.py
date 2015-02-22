@@ -25,25 +25,24 @@ class InteractiveInterpreter(cmd.Cmd):
   def complete_send(self,text,line,start_index,end_index):
     if text:
       return [
-        address for address in self.myDatabase.addresses
+        address for address in self.myDatabase.addresses()
         if address.startswith(text)
       ]
     else:
-      return self.myDatabase.addresses
+      return self.myDatabase.addresses()
 
   def do_name(self,line):
-     
     print "lists all names"
     pass
 
   def complete_name(self,text,line,start_index,end_index):
     if text:
       return [
-        name for name in self.myDatabase.names
+        name for name in self.myDatabase.names()
         if name.startswith(text)
       ]
     else:
-      return self.myDatabase.names
+      return self.myDatabase.names()
 
   def do_clear(self,line):
     os.system('clear')
