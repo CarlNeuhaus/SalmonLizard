@@ -9,7 +9,7 @@ Usage:
 
 \opt by default"
 
-if [ "$(id -u)" != "0"]; then
+if [ "$(id -u)" != "0" ]; then
   echo "Must run as root"
   echo ""
   echo "$USAGE"
@@ -17,7 +17,7 @@ if [ "$(id -u)" != "0"]; then
 
 fi
 
-if [ $# != 1]; then
+if [ $# != 1 ]; then
   INSTALLROOT="/opt"
 else
   INSTALLROOT="$1"
