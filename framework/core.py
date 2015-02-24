@@ -49,8 +49,8 @@ class Framework(object):
 
   def import_module(self, module_path, reload_module=False):
     try:
-      module = __import__(self.__package__ + '.modules.' + module_path.replace('/', '.'), None, None, ['Module'])
-      print module
+      module = __import__(self.__package__ + '.modules.' + module_path.replace('/','.'), None, None, ['Module'])
+      #module = __import__(self.__package__ + '.modules.' + module_path.replace('/', '.'), None, None, ['Module'])
       module_instance = module.Module(self)
       #module_instance = module
     except Exception as err:
@@ -61,7 +61,6 @@ class Framework(object):
   def run(self, module=None):
     if module == None:
       module = self.current_module
-      print module
     result = None
     try:
       result = module.run()

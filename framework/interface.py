@@ -39,6 +39,7 @@ class InteractiveInterpreter(cmd.Cmd):
       self.intro = os.system("figlet lizard")
       self.myDatabase = Database()
       self.frmwk = Framework()
+      print "Loaded Modules: " + ', '.join(self.frmwk.modules.keys())
 
   def do_use(self,line):
     """Select a module to use"""
