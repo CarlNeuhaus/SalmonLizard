@@ -35,7 +35,8 @@ class Framework(object):
     # load modules
       try:
         module_instance = self.import_module(module_path)
-      except:
+      except Exception, error:
+        print error
         #print "failed"
         pass
       if not hasattr(module_instance, 'run'):
@@ -56,6 +57,7 @@ class Framework(object):
     except Exception as err:
       message = 'failed to load module: ' + module_path
       print message 
+      print err
     return module_instance
   
   def run(self, module=None):

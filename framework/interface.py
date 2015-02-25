@@ -24,6 +24,13 @@ import sys
 # fixes colours 
 if sys.platform == 'darwin':
   from framework.formatting import coloursOSX as colours
+  # makes tab complete work on osx
+  import readline
+  import rlcompleter
+  if 'libedit' in readline.__doc__:
+    readline.parse_and_bind("bind ^I rl_complete")
+  else:
+    readline.parse_and_bind("tab: complete")
 if sys.platform == 'linux' or sys.platform == 'linux2':
   from framework.formatting import coloursLinux as colours
 if sys.platform == 'win32':
@@ -73,9 +80,9 @@ class InteractiveInterpreter(cmd.Cmd):
       print ''
     except Exception as error:
       old_module = None
-      print "shit broke"
-    if old_module:
-      self.frmwk.current_module = old_module
+      print error
+      if old_module:
+        self.frmwk.current_module = old_module
 
   def do_send(self,line):
     pass
